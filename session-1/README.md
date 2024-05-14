@@ -1,6 +1,9 @@
 # Ask Slalom
 
 ```shell
+task install
+source .venv/bin/activate
+
 python3 main.py crawl https://www.slalom.com/au/en
 python3 main.py tokenize https://www.slalom.com/au/en
 python3 main.py embed https://www.slalom.com/au/en
