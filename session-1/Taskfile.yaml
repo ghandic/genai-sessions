@@ -1,0 +1,23 @@
+version: "3"
+
+tasks:
+  __install-deps:
+    internal: true
+    summary: |
+      Installs dependencies for the installation
+    status:
+      - test -f .venv/bin/activate
+    cmd: |
+      brew list pyenv &> /dev/null || brew install pyenv
+      pyenv install -s 3.12
+      pyenv global 3.12
+      pip install uv &> /dev/null
+      uv venv --python 3.12 &> /dev/null
+
+  install:
+    summary: |
+      Installs dependencies
+    deps:
+      - __install-deps
+    cmds:
+      - uv pip install -r requirements.txt &> /dev/null
